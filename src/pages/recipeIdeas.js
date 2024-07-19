@@ -1,11 +1,11 @@
 import Navbar from "@/components/Navbar";
 
-const recipes = () => {
+const recipeIdeas = () => {
   return (
-    <>
+    <div>
       <Navbar />
-    </>
+    </div>
   );
 };
 
-export default recipes;
+export default recipeIdeas;

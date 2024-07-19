@@ -1,7 +1,25 @@
-import { useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Navbar = () => {
-  const [currentPage, setCurrentPage] = useState("My Recipes");
+  const router = useRouter();
+
+  const getPageTitle = (path) => {
+    switch (path) {
+      case "/myRecipes":
+        return "My Recipes";
+      case "/recipeIdeas":
+        return "Recipe Ideas";
+      case "/recipeCreator":
+        return "Recipe Creator";
+      case "/randomRecipePicker":
+        return "Random Recipe Picker";
+      default:
+        return "Home";
+    }
+  };
+
+  const currentPage = getPageTitle(router.pathname);
 
   return (
     <div className="navbar bg-base-100">
@@ -28,16 +46,16 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
             <li>
-              <a>My Recipes</a>
+              <Link href="/myRecipes">My Recipes</Link>
             </li>
             <li>
-              <a>Recipe Ideas</a>
+              <Link href="/recipeIdeas">Recipe Ideas</Link>
             </li>
             <li>
-              <a>Recipe Creator</a>
+              <Link href="/recipeCreator">Recipe Creator</Link>
             </li>
             <li>
-              <a>Random Recipe Picker</a>
+              <Link href="/randomRecipePicker">Random Recipe Picker</Link>
             </li>
           </ul>
         </div>
