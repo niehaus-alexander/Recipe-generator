@@ -1,11 +1,7 @@
 import Navbar from "@/components/Navbar";
 
 const myRecipes = () => {
-  return (
-    <>
-      <Navbar />
-    </>
-  );
+  return <></>;
 };
 
 export default myRecipes;
