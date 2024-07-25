@@ -1,7 +1,11 @@
-import Navbar from "@/components/Navbar";
+import CardList from "@/components/CardList";
 
 const myRecipes = () => {
-  return <></>;
+  return (
+    <>
+      <CardList />
+    </>
+  );
 };
 
 export default myRecipes;

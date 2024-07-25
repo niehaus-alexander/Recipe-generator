@@ -5,7 +5,6 @@ export default function Home() {
   return (
     <div className="hero bg-base-200 min-h-screen">
       <div className="hero-content flex flex-col lg:flex-row-reverse items-center lg:items-start text-center lg:text-left">
-        {/* Image that will be hidden on mobile */}
         <Image
           alt="some delicious food"
           width={250}
