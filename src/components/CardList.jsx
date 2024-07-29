@@ -6,7 +6,7 @@ const CardList = ({ recipes }) => {
       {recipes.map((item) => {
         return (
           <li key={item}>
-            <Card />
+            <Card data={item} />
           </li>
         );
       })}
