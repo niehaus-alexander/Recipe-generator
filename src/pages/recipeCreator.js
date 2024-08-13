@@ -1,5 +1,7 @@
+import RecipeForm from "@/components/RecipeForm";
+
 const recipeCreator = () => {
-  return <div></div>;
+  return <RecipeForm />;
 };
 
 export default recipeCreator;
