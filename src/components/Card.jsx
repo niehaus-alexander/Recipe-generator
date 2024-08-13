@@ -4,7 +4,7 @@ const Card = ({ data }) => {
       <div className="card-body">
         <h2 className="card-title">{data.name}</h2>
         <p>
-          <span className="font-semibold">Time:</span> {data.timeInMinutes}
+          <span className="font-semibold">Time:</span> {data.timeInMinutes} min.
         </p>
         <p>
           <span className="font-semibold">Cuisine:</span> {data.cuisine}
