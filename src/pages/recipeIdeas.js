@@ -1,5 +1,8 @@
+import CardList from "@/components/CardList";
+import recipeData from "@/lib/recipeData";
+
 const recipeIdeas = () => {
-  return <div></div>;
+  return <CardList recipes={recipeData} />;
 };
 
 export default recipeIdeas;
