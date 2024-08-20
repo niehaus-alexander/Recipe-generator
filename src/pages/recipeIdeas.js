@@ -3,7 +3,7 @@ import recipeData from "@/lib/recipeData";
 
 const recipeIdeas = () => {
   return (
-    <div className="h-screen w-full">
+    <div className="w-full">
       <CardList recipes={recipeData} />
     </div>
   );
