@@ -33,6 +33,17 @@ const RecipeForm = () => {
             <span>hard</span>
           </div>
         </div>
+        <select className="select select-primary w-full max-w-xs">
+          <option disabled selected>
+            Duration
+          </option>
+          <option>~ 15 min.</option>
+          <option>~ 30 min.</option>
+          <option>~ 45 min.</option>
+          <option>~ 60 min.</option>
+          <option>~ 90 min.</option>
+          <option>~ 120 min.</option>
+        </select>
       </form>
     </div>
   );
