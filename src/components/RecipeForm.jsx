@@ -17,22 +17,15 @@ const RecipeForm = () => {
           placeholder="Cuisine"
           className="input input-bordered input-primary w-full max-w-xs"
         />
-        <div className="border border-solid border-primary rounded-[2rem] p-4 w-full max-w-xs">
-          <label className="block mb-2">Difficulty</label>
-          <input
-            type="range"
-            min={0}
-            max="100"
-            className="range range-primary w-full max-w-xs"
-            step="50"
-          />
+        <select className="select select-primary w-full max-w-xs">
+          <option disabled selected>
+            Difficulty
+          </option>
+          <option>easy</option>
+          <option>moderate</option>
+          <option>hard</option>
+        </select>
 
-          <div className="flex w-full max-w-xs justify-between px-2 text-xs">
-            <span>easy</span>
-            <span>moderat</span>
-            <span>hard</span>
-          </div>
-        </div>
         <select className="select select-primary w-full max-w-xs">
           <option disabled selected>
             Duration
@@ -44,6 +37,25 @@ const RecipeForm = () => {
           <option>~ 90 min.</option>
           <option>~ 120 min.</option>
         </select>
+        <div className="w-full max-w-xs">
+          <h3 className="text-lg font-semibold mb-4 ">Ingredients:</h3>
+          <textarea
+            rows={4}
+            className="textarea textarea-primary w-full max-w-xs"
+            placeholder={`- onions\n- garlic\n- tomatos`}
+          ></textarea>
+        </div>
+        <div className="w-full max-w-xs">
+          <h3 className="text-lg font-semibold mb-4 ">Preparation:</h3>
+          <textarea
+            rows={4}
+            className="textarea textarea-primary w-full max-w-xs"
+            placeholder="1. Cut onions without crying..."
+          ></textarea>
+        </div>
+        <button type="submit" className="btn btn-primary">
+          Create Recipe!
+        </button>
       </form>
     </div>
   );
