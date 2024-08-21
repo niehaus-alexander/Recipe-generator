@@ -1,11 +1,24 @@
 const RecipeForm = () => {
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData);
+    console.log(data);
+  }
+
   return (
     <div className="max-w-screen-lg mx-auto flex justify-center items-center">
-      <form className="border border-solid flex flex-col justify-center items-center w-1/2 gap-2 m-6 p-6 rounded-md">
+      <form
+        onSubmit={handleSubmit}
+        className="border border-solid flex flex-col justify-center items-center w-1/2 gap-2 m-6 p-6 rounded-md"
+      >
         <legend className="text-neutral text-lg font-semibold">
           Add a new recipe:
         </legend>
         <input
+          name="name"
+          id="name"
           type="text"
           placeholder="Recipe Name"
           className="input input-bordered input-primary w-full max-w-xs"
@@ -13,23 +26,31 @@ const RecipeForm = () => {
         />
 
         <input
+          name="cuisine"
+          id="cuisine"
           type="text"
           placeholder="Cuisine"
           className="input input-bordered input-primary w-full max-w-xs"
         />
-        <select className="select select-primary w-full max-w-xs">
-          <option disabled selected>
-            Difficulty
-          </option>
+        <select
+          defaultValue={"Difficulty"}
+          className="select select-primary w-full max-w-xs"
+          name="difficulty"
+          id="difficulty"
+        >
+          <option disabled>Difficulty</option>
           <option>easy</option>
           <option>moderate</option>
           <option>hard</option>
         </select>
 
-        <select className="select select-primary w-full max-w-xs">
-          <option disabled selected>
-            Duration
-          </option>
+        <select
+          defaultValue={"Duration"}
+          className="select select-primary w-full max-w-xs"
+          name="duration"
+          id="duration"
+        >
+          <option disabled>Duration</option>
           <option>~ 15 min.</option>
           <option>~ 30 min.</option>
           <option>~ 45 min.</option>
@@ -40,6 +61,8 @@ const RecipeForm = () => {
         <div className="w-full max-w-xs">
           <h3 className="text-lg font-semibold mb-4 ">Ingredients:</h3>
           <textarea
+            name="ingredients"
+            id="ingredients"
             rows={4}
             className="textarea textarea-primary w-full max-w-xs"
             placeholder={`- onions\n- garlic\n- tomatos`}
@@ -48,6 +71,8 @@ const RecipeForm = () => {
         <div className="w-full max-w-xs">
           <h3 className="text-lg font-semibold mb-4 ">Preparation:</h3>
           <textarea
+            name="preparation"
+            id="preparation"
             rows={4}
             className="textarea textarea-primary w-full max-w-xs"
             placeholder="1. Cut onions without crying..."
