@@ -8,10 +8,10 @@ const Navbar = () => {
     switch (path) {
       case "/myRecipes":
         return "My Recipes";
-      case "/recipeIdeas":
-        return "Recipe Ideas";
-      case "/recipeCreator":
-        return "Recipe Creator";
+      case "/Inspiration":
+        return "Inspiration";
+      case "/Creator":
+        return "Creator";
       case "/randomRecipePicker":
         return "Random Recipe Picker";
       default:
@@ -49,10 +49,10 @@ const Navbar = () => {
               <Link href="/myRecipes">My Recipes</Link>
             </li>
             <li>
-              <Link href="/recipeIdeas">Recipe Ideas</Link>
+              <Link href="/Inspiration">Inspiration</Link>
             </li>
             <li>
-              <Link href="/recipeCreator">Recipe Creator</Link>
+              <Link href="/Creator">Creator</Link>
             </li>
             <li>
               <Link href="/randomRecipePicker">Random Recipe Picker</Link>

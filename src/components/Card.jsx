@@ -1,4 +1,7 @@
-const Card = ({ data }) => {
+import { useState } from "react";
+
+const Card = ({ data, onDeleteRecipe }) => {
+  const [deleteMode, setDeleteMode] = useState(false);
   return (
     <div className="card bg-primary text-primary-content w-96 m-6">
       <div className="card-body">
@@ -13,7 +16,27 @@ const Card = ({ data }) => {
           <span className="font-semibold">Difficulty:</span> {data.difficulty}
         </p>
         <div className="card-actions justify-end">
-          <button className="btn">Details</button>
+          {!deleteMode ? (
+            <button className="btn">Details</button>
+          ) : (
+            <button
+              onClick={() => {
+                onDeleteRecipe(data.id);
+              }}
+              className="btn btn-success"
+            >
+              Confirm Delete!
+            </button>
+          )}
+
+          {data.ownRecipe && (
+            <button
+              onClick={() => setDeleteMode(!deleteMode)}
+              className="btn btn-error"
+            >
+              {deleteMode ? "Cancel" : "Delete"}
+            </button>
+          )}
         </div>
       </div>
     </div>
