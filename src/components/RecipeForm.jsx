@@ -1,17 +1,27 @@
+import { useState } from "react";
+import { nanoid } from "nanoid";
+
 const RecipeForm = () => {
+  const [createdRecipes, setCreatedRecipes] = useState([]);
+
   function handleSubmit(event) {
     event.preventDefault();
-
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-    console.log(data);
+    const newRecipe = { id: nanoid(), creationDate: Date.now(), ...data };
+    setCreatedRecipes((prevRecipes) => {
+      const updatedRecipes = [...prevRecipes, newRecipe];
+      console.log(updatedRecipes);
+
+      return updatedRecipes;
+    });
   }
 
   return (
     <div className="max-w-screen-lg mx-auto flex justify-center items-center">
       <form
         onSubmit={handleSubmit}
-        className="border border-solid flex flex-col justify-center items-center w-1/2 gap-2 m-6 p-6 rounded-md"
+        className="border border-solid flex flex-col justify-center items-center w-2/3 gap-2 m-6 p-6 rounded-md"
       >
         <legend className="text-neutral text-lg font-semibold">
           Add a new recipe:
@@ -58,6 +68,23 @@ const RecipeForm = () => {
           <option>~ 90 min.</option>
           <option>~ 120 min.</option>
         </select>
+        <select
+          defaultValue={"Portions"}
+          className="select select-primary w-full max-w-xs"
+          name="portions"
+          id="portions"
+        >
+          <option disabled>Portions</option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+          <option>6</option>
+          <option>7</option>
+          <option>8</option>
+        </select>
+
         <div className="w-full max-w-xs">
           <h3 className="text-lg font-semibold mb-4 ">Ingredients:</h3>
           <textarea
