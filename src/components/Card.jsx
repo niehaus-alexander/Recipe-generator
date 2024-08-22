@@ -1,4 +1,4 @@
-const Card = ({ data }) => {
+const Card = ({ data, onDeleteRecipe }) => {
   return (
     <div className="card bg-primary text-primary-content w-96 m-6">
       <div className="card-body">
@@ -14,6 +14,17 @@ const Card = ({ data }) => {
         </p>
         <div className="card-actions justify-end">
           <button className="btn">Details</button>
+
+          {data.ownRecipe && (
+            <button
+              onClick={() => {
+                onDeleteRecipe(data.id);
+              }}
+              className="btn btn-error"
+            >
+              Delete
+            </button>
+          )}
         </div>
       </div>
     </div>
