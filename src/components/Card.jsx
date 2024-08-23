@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 const Card = ({ data, onDeleteRecipe }) => {
   const [deleteMode, setDeleteMode] = useState(false);
@@ -6,6 +8,7 @@ const Card = ({ data, onDeleteRecipe }) => {
     <div className="card bg-primary text-primary-content w-96 m-6">
       <div className="card-body">
         <h2 className="card-title">{data.name}</h2>
+        <FontAwesomeIcon icon={faStar} size="3x" />
         <p>
           <span className="font-semibold">Time:</span> {data.timeInMinutes} min.
         </p>
