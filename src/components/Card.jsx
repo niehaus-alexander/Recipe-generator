@@ -1,14 +1,23 @@
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { useRouter } from "next/router";
 
-const Card = ({ data, onDeleteRecipe }) => {
+const Card = ({ data, onDeleteRecipe, onToggleFavorites }) => {
   const [deleteMode, setDeleteMode] = useState(false);
+  const router = useRouter();
   return (
-    <div className="card bg-primary text-primary-content w-96 m-6">
+    <div className="card bg-primary text-primary-content w-96 m-6 relative">
       <div className="card-body">
         <h2 className="card-title">{data.name}</h2>
-        <FontAwesomeIcon icon={faStar} size="3x" />
+        <button onClick={() => onToggleFavorites(data.id)}>
+          <FontAwesomeIcon
+            icon={faStar}
+            size="2x"
+            className="absolute top-[-1rem] right-[-1rem]"
+            color={data.isFavorite ? "orange" : "black"}
+          />
+        </button>
         <p>
           <span className="font-semibold">Time:</span> {data.timeInMinutes} min.
         </p>
@@ -32,7 +41,7 @@ const Card = ({ data, onDeleteRecipe }) => {
             </button>
           )}
 
-          {data.ownRecipe && (
+          {router.pathname === "/Creator" && data.ownRecipe && (
             <button
               onClick={() => setDeleteMode(!deleteMode)}
               className="btn btn-error"
