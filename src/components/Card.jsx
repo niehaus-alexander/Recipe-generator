@@ -20,20 +20,20 @@ const Card = ({ data, onDeleteRecipe, onToggleFavorites, favoriteRecipes }) => {
             color={isFavorite ? "orange" : "black"}
           />
         </button>
-        {!data.isFetched && (
-          <p>
-            <span className="font-semibold">Time:</span> {data.timeInMinutes}{" "}
-            min.
-          </p>
-        )}
+
+        <p>
+          <span className="font-semibold">Time:</span>{" "}
+          {data.isFetched ? "?" : data.timeInMinutes} min.
+        </p>
+
         <p>
           <span className="font-semibold">Cuisine:</span> {data.cuisine}
         </p>
-        {!data.isFetched && (
-          <p>
-            <span className="font-semibold">Difficulty:</span> {data.difficulty}
-          </p>
-        )}
+
+        <p>
+          <span className="font-semibold">Difficulty:</span>{" "}
+          {data.isFetched ? "?" : data.difficulty}
+        </p>
 
         <div className="card-actions justify-end">
           {!deleteMode ? (
