@@ -3,6 +3,9 @@ import Layout from "@/components/Layout";
 import { nanoid } from "nanoid";
 import useLocalStorageState from "use-local-storage-state";
 import { useState } from "react";
+import { SWRConfig } from "swr";
+
+const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 export default function App({ Component, pageProps }) {
   const [favoriteRecipes, setFavoriteRecipes] = useState([]);
@@ -37,6 +40,8 @@ export default function App({ Component, pageProps }) {
     );
   }
 
+  // __________HANDLE SUBMIT______________________
+
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -66,16 +71,19 @@ export default function App({ Component, pageProps }) {
     });
     event.target.reset();
   }
+  // ______________END HANDLE SUBMIT
   return (
-    <Layout>
-      <Component
-        {...pageProps}
-        onSubmit={handleSubmit}
-        createdRecipes={createdRecipes}
-        onDeleteRecipe={handleDeleteRecipe}
-        onToggleFavorites={handleToggleFavorites}
-        favoriteRecipes={favoriteRecipes}
-      />
-    </Layout>
+    <SWRConfig value={{ fetcher }}>
+      <Layout>
+        <Component
+          {...pageProps}
+          onSubmit={handleSubmit}
+          createdRecipes={createdRecipes}
+          onDeleteRecipe={handleDeleteRecipe}
+          onToggleFavorites={handleToggleFavorites}
+          favoriteRecipes={favoriteRecipes}
+        />
+      </Layout>
+    </SWRConfig>
   );
 }
