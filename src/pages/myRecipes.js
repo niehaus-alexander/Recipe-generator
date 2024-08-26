@@ -3,11 +3,12 @@ import CardList from "@/components/CardList";
 const myRecipes = ({ favoriteRecipes, onToggleFavorites }) => {
   return (
     <div className="h-screen w-full flex flex-col items-center">
-      <h1 className="text-2xl font-semibold mt-6">Your Favorite Creations:</h1>
+      <h1 className="text-2xl font-semibold mt-6">Your Favorite Recipes:</h1>
       {favoriteRecipes.length > 0 ? (
         <CardList
           recipes={favoriteRecipes}
           onToggleFavorites={onToggleFavorites}
+          favoriteRecipes={favoriteRecipes}
         />
       ) : (
         <h2 className="text-lg m-6">
