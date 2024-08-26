@@ -2,13 +2,16 @@ import "@/styles/globals.css";
 import Layout from "@/components/Layout";
 import { nanoid } from "nanoid";
 import useLocalStorageState from "use-local-storage-state";
-import { useState } from "react";
 import { SWRConfig } from "swr";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 export default function App({ Component, pageProps }) {
-  const [favoriteRecipes, setFavoriteRecipes] = useState([]);
+  const [favoriteRecipes, setFavoriteRecipes] = useLocalStorageState(
+    "favoriteRecipes",
+    { defaultValue: [] }
+  );
+
   const [createdRecipes, setCreatedRecipes] = useLocalStorageState(
     "createdRecipes",
     {
@@ -16,18 +19,16 @@ export default function App({ Component, pageProps }) {
     }
   );
 
-  function handleToggleFavorites(id) {
-    setCreatedRecipes((prevRecipes) => {
-      const updatedRecipes = prevRecipes.map((recipe) =>
-        recipe.id === id
-          ? { ...recipe, isFavorite: !recipe.isFavorite }
-          : recipe
+  function handleToggleFavorites(data) {
+    setFavoriteRecipes((prevFavoriteRecipes) => {
+      const exists = prevFavoriteRecipes.some(
+        (recipe) => recipe.id === data.id
       );
-
-      const favorites = updatedRecipes.filter((recipe) => recipe.isFavorite);
-      setFavoriteRecipes(favorites);
-
-      return updatedRecipes;
+      if (exists) {
+        return prevFavoriteRecipes.filter((recipe) => recipe.id !== data.id);
+      } else {
+        return [...prevFavoriteRecipes, data];
+      }
     });
   }
 
@@ -58,7 +59,7 @@ export default function App({ Component, pageProps }) {
 
     const newRecipe = {
       id: nanoid(),
-      isFavorite: false,
+
       creationDate: Date.now(),
       ownRecipe: true,
       ...data,

@@ -2,7 +2,7 @@ import CardList from "@/components/CardList";
 import { useState } from "react";
 import useSWR from "swr";
 
-const RecipeIdeas = ({ onToggleFavorites }) => {
+const RecipeIdeas = ({ onToggleFavorites, favoriteRecipes }) => {
   const [area, setArea] = useState("Canadian");
   const { data, error, isLoading, isValidating } = useSWR(
     "https://www.themealdb.com/api/json/v1/1/filter.php?a=Canadian"
@@ -12,7 +12,6 @@ const RecipeIdeas = ({ onToggleFavorites }) => {
   if (isLoading) return <div>loading...</div>;
 
   const recipeFetchData = data.meals.map((meal) => {
-    // Gather ingredients into a single string
     const ingredients = [];
     for (let i = 1; i <= 20; i++) {
       if (meal[`strIngredient${i}`]) {
@@ -23,21 +22,19 @@ const RecipeIdeas = ({ onToggleFavorites }) => {
     }
 
     return {
-      name: meal.strMeal, // Recipe name
-      id: meal.idMeal, // Recipe ID
-      cuisine: area, // Recipe area (cuisine)
-      ingredients: ingredients.join(", "), // All ingredients joined in a single string
-      preparation: meal.strInstructions, // Preparation instructions
+      name: meal.strMeal,
+      id: meal.idMeal,
+      cuisine: area,
+      ingredients: ingredients.join(", "),
+      preparation: meal.strInstructions,
       isFetched: true,
-      isFavorite: false,
     };
   });
-
-  console.log(recipeFetchData);
 
   return (
     <div className="w-full">
       <CardList
+        favoriteRecipes={favoriteRecipes}
         onToggleFavorites={onToggleFavorites}
         recipes={recipeFetchData}
       />

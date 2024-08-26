@@ -8,6 +8,7 @@ const myRecipes = ({ favoriteRecipes, onToggleFavorites }) => {
         <CardList
           recipes={favoriteRecipes}
           onToggleFavorites={onToggleFavorites}
+          favoriteRecipes={favoriteRecipes}
         />
       ) : (
         <h2 className="text-lg m-6">
