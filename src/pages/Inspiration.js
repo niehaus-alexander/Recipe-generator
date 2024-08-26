@@ -1,11 +1,16 @@
+import AreaFilter from "@/components/AreaFilter";
 import CardList from "@/components/CardList";
 import { useState } from "react";
 import useSWR from "swr";
+import useLocalStorageState from "use-local-storage-state";
 
 const RecipeIdeas = ({ onToggleFavorites, favoriteRecipes }) => {
-  const [area, setArea] = useState("Canadian");
+  const [selectedCuisine, setSelectedCuisine] = useLocalStorageState(
+    "selectedCuisine",
+    { defaultValue: "Italian" }
+  );
   const { data, error, isLoading, isValidating } = useSWR(
-    "https://www.themealdb.com/api/json/v1/1/filter.php?a=Canadian"
+    `https://www.themealdb.com/api/json/v1/1/filter.php?a=${selectedCuisine}`
   );
 
   if (error) return <div>failed to load</div>;
@@ -24,15 +29,23 @@ const RecipeIdeas = ({ onToggleFavorites, favoriteRecipes }) => {
     return {
       name: meal.strMeal,
       id: meal.idMeal,
-      cuisine: area,
+      cuisine: selectedCuisine,
       ingredients: ingredients.join(", "),
       preparation: meal.strInstructions,
       isFetched: true,
     };
   });
 
+  function handleCuisineFilter(event) {
+    setSelectedCuisine(event.target.value);
+  }
+
   return (
     <div className="w-full">
+      <AreaFilter
+        selectedCuisine={selectedCuisine}
+        onCuisineFilter={handleCuisineFilter}
+      />
       <CardList
         favoriteRecipes={favoriteRecipes}
         onToggleFavorites={onToggleFavorites}
