@@ -1,13 +1,13 @@
 import CardList from "@/components/CardList";
 import RecipeForm from "@/components/RecipeForm";
 
-const Creator = ({
+export default function Creator({
   onSubmit,
   onDeleteRecipe,
   createdRecipes,
   onToggleFavorites,
   favoriteRecipes,
-}) => {
+}) {
   return (
     <div className="w-full">
       <RecipeForm onSubmit={onSubmit} />
@@ -19,6 +19,4 @@ const Creator = ({
       />
     </div>
   );
-};
-
-export default Creator;
+}

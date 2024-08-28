@@ -1,6 +1,6 @@
 import CardList from "@/components/CardList";
 
-const myRecipes = ({ favoriteRecipes, onToggleFavorites }) => {
+export default function MyRecipes({ favoriteRecipes, onToggleFavorites }) {
   return (
     <div className="h-screen w-full flex flex-col items-center">
       <h1 className="text-2xl font-semibold mt-6">Your Favorite Recipes:</h1>
@@ -18,6 +18,4 @@ const myRecipes = ({ favoriteRecipes, onToggleFavorites }) => {
       )}
     </div>
   );
-};
-
-export default myRecipes;
+}

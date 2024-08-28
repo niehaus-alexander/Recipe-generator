@@ -1,10 +1,9 @@
 import AreaFilter from "@/components/AreaFilter";
 import CardList from "@/components/CardList";
-import { useState } from "react";
 import useSWR from "swr";
 import useLocalStorageState from "use-local-storage-state";
 
-const RecipeIdeas = ({ onToggleFavorites, favoriteRecipes }) => {
+export default function RecipeIdeas({ onToggleFavorites, favoriteRecipes }) {
   const [selectedCuisine, setSelectedCuisine] = useLocalStorageState(
     "selectedCuisine",
     { defaultValue: "Italian" }
@@ -53,6 +52,4 @@ const RecipeIdeas = ({ onToggleFavorites, favoriteRecipes }) => {
       />
     </div>
   );
-};
-
-export default RecipeIdeas;
+}
