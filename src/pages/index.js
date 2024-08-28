@@ -22,7 +22,7 @@ export default function Home() {
             our Random Recipe Picker choose for you and take the guesswork out
             of meal planning!
           </p>
-          <Link className="btn btn-primary" href="/Inspiration">
+          <Link className="btn btn-primary" href="/inspiration">
             Get started
           </Link>
         </div>
