@@ -1,7 +1,7 @@
 import CardList from "@/components/CardList";
 import RecipeForm from "@/components/RecipeForm";
 
-export default function Creator({
+export default function CreatorPage({
   onSubmit,
   onDeleteRecipe,
   createdRecipes,

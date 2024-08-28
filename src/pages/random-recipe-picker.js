@@ -1,4 +1,4 @@
-export default function RandomRecipePicker() {
+export default function RandomRecipePickerPage() {
   return (
     <div className="w-full">
       <div className="max-w-screen-lg mx-auto">

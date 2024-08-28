@@ -20,7 +20,7 @@ const Card = ({ data, onDeleteRecipe, onToggleFavorites, favoriteRecipes }) => {
             color={isFavorite ? "orange" : "black"}
           />
         </button>
-        {router.pathname !== "/Inspiration" && (
+        {router.pathname !== "/inspiration" && (
           <p>
             <span className="font-semibold">Time:</span>{" "}
             {data.isFetched ? "?" : data.timeInMinutes} min.
@@ -29,7 +29,7 @@ const Card = ({ data, onDeleteRecipe, onToggleFavorites, favoriteRecipes }) => {
         <p>
           <span className="font-semibold">Cuisine:</span> {data.cuisine}
         </p>
-        {router.pathname !== "/Inspiration" && (
+        {router.pathname !== "/inspiration" && (
           <p>
             <span className="font-semibold">Difficulty:</span>{" "}
             {data.isFetched ? "?" : data.difficulty}
@@ -49,7 +49,7 @@ const Card = ({ data, onDeleteRecipe, onToggleFavorites, favoriteRecipes }) => {
             </button>
           )}
 
-          {router.pathname === "/Creator" && data.ownRecipe && (
+          {router.pathname === "/creator" && data.ownRecipe && (
             <button
               onClick={() => setDeleteMode(!deleteMode)}
               className="btn btn-error"

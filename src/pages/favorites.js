@@ -1,6 +1,6 @@
 import CardList from "@/components/CardList";
 
-export default function MyRecipes({ favoriteRecipes, onToggleFavorites }) {
+export default function FavoritesPage({ favoriteRecipes, onToggleFavorites }) {
   return (
     <div className="h-screen w-full flex flex-col items-center">
       <h1 className="text-2xl font-semibold mt-6">Your Favorite Recipes:</h1>

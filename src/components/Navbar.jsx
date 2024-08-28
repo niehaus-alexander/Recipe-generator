@@ -6,13 +6,13 @@ const Navbar = () => {
 
   const getPageTitle = (path) => {
     switch (path) {
-      case "/myRecipes":
-        return "My Recipes";
-      case "/Inspiration":
+      case "/favorites":
+        return "Favorites";
+      case "/inspiration":
         return "Inspiration";
-      case "/Creator":
+      case "/creator":
         return "Creator";
-      case "/randomRecipePicker":
+      case "/random-recipe-picker":
         return "Random Recipe Picker";
       default:
         return "Home";
@@ -46,16 +46,16 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
             <li>
-              <Link href="/myRecipes">My Recipes</Link>
+              <Link href="/favorites">Favorites</Link>
             </li>
             <li>
-              <Link href="/Inspiration">Inspiration</Link>
+              <Link href="/inspiration">Inspiration</Link>
             </li>
             <li>
-              <Link href="/Creator">Creator</Link>
+              <Link href="/creator">Creator</Link>
             </li>
             <li>
-              <Link href="/randomRecipePicker">Random Recipe Picker</Link>
+              <Link href="/random-recipe-picker">Random Recipe Picker</Link>
             </li>
           </ul>
         </div>

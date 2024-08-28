@@ -3,7 +3,10 @@ import CardList from "@/components/CardList";
 import useSWR from "swr";
 import useLocalStorageState from "use-local-storage-state";
 
-export default function RecipeIdeas({ onToggleFavorites, favoriteRecipes }) {
+export default function InspirationPage({
+  onToggleFavorites,
+  favoriteRecipes,
+}) {
   const [selectedCuisine, setSelectedCuisine] = useLocalStorageState(
     "selectedCuisine",
     { defaultValue: "Italian" }
