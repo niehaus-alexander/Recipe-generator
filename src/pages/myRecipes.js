@@ -13,7 +13,7 @@ const myRecipes = ({ favoriteRecipes, onToggleFavorites }) => {
       ) : (
         <h2 className="text-lg m-6">
           ...seems like you don't have any favorites yet. Go to Creator or
-          Inspirations to add recipes to your favorites by clicking on the star.
+          Inspiration to add recipes to your favorites by clicking on the star.
         </h2>
       )}
     </div>
