@@ -35,18 +35,28 @@ export default function RandomRecipePickerPage({
           <h2 className="text-center font-semibold text-3xl mb-10">
             Favorites
           </h2>
-          <button
-            onClick={handlePickRandomFavoritesRecipe}
-            className="btn btn-secondary mb-6"
-          >
-            Pick random recipe!
-          </button>
-          {randomFavoritesRecipe && (
-            <Card
-              onToggleFavorites={onToggleFavorites}
-              data={randomFavoritesRecipe}
-              favoriteRecipes={favoriteRecipes}
-            />
+
+          {favoriteRecipes.length === 0 ? (
+            <p className="text-center text-gray-500">
+              You have no favorite recipes. Go to Creator or Inspiration to add
+              some!
+            </p>
+          ) : (
+            <>
+              <button
+                onClick={handlePickRandomFavoritesRecipe}
+                className="btn btn-secondary mb-6"
+              >
+                Pick random recipe!
+              </button>
+              {randomFavoritesRecipe && (
+                <Card
+                  onToggleFavorites={onToggleFavorites}
+                  data={randomFavoritesRecipe}
+                  favoriteRecipes={favoriteRecipes}
+                />
+              )}
+            </>
           )}
         </div>
         <div className="w-full p-6 flex justify-center items-center flex-col ">
