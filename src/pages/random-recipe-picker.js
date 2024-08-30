@@ -1,11 +1,44 @@
 import { useState } from "react";
 import Card from "@/components/Card";
+import useSWR from "swr";
 
 export default function RandomRecipePickerPage({
   favoriteRecipes,
   onToggleFavorites,
 }) {
   const [randomFavoritesRecipe, setRandomFavoritesRecipe] = useState(null);
+
+  const { data, error, isLoading, isValidating, mutate } = useSWR(
+    `https://www.themealdb.com/api/json/v1/1/random.php`,
+    {
+      revalidateOnMount: false,
+      revalidateOnFocus: false,
+      revalidateIfStale: false,
+    }
+  );
+
+  const randomFetchedRecipe =
+    data && data.meals && data.meals.length > 0
+      ? {
+          name: data.meals[0].strMeal,
+          id: data.meals[0].idMeal,
+          cuisine: data.meals[0].strArea,
+          ingredients: data.meals[0].strIngredient1
+            ? Object.keys(data.meals[0])
+                .filter((key) => key.startsWith("strIngredient"))
+                .map((key) => data.meals[0][key])
+                .filter(Boolean)
+                .join(", ")
+            : "",
+          preparation: data.meals[0].strInstructions,
+          isFetched: true,
+        }
+      : null;
+
+  function handleFetchRandomRecipe() {
+    mutate();
+    console.log(randomFetchedRecipe);
+  }
 
   function handlePickRandomFavoritesRecipe() {
     if (favoriteRecipes.length > 0) {
@@ -31,7 +64,7 @@ export default function RandomRecipePickerPage({
           </a>
           .
         </h2>
-        <div className="w-full p-6 flex justify-center items-center flex-col mb-10">
+        <div className="w-full p-6 flex justify-center items-center flex-col mb-6">
           <h2 className="text-center font-semibold text-3xl mb-10">
             Favorites
           </h2>
@@ -39,7 +72,7 @@ export default function RandomRecipePickerPage({
           {favoriteRecipes.length === 0 ? (
             <p className="text-center text-gray-500">
               You have no favorite recipes. Go to Creator or Inspiration to add
-              some!
+              some by clicking on the star!
             </p>
           ) : (
             <>
@@ -63,7 +96,21 @@ export default function RandomRecipePickerPage({
           <h2 className="text-center font-semibold text-3xl mb-10">
             MealDB Database
           </h2>
-          <button className="btn btn-secondary">Pick random recipe!</button>
+          <button
+            onClick={handleFetchRandomRecipe}
+            className="btn btn-secondary mb-6"
+          >
+            Pick random recipe!
+          </button>
+          {isLoading && <p>Loading...</p>}
+          {error && <p>Error loading recipe,</p>}
+          {data && data.meals && (
+            <Card
+              onToggleFavorites={onToggleFavorites}
+              data={randomFetchedRecipe}
+              favoriteRecipes={favoriteRecipes}
+            />
+          )}
         </div>
       </div>
     </div>
