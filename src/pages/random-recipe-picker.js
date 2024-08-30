@@ -104,8 +104,9 @@ export default function RandomRecipePickerPage({
           </button>
           {isLoading && <p>Loading...</p>}
           {error && <p>Error loading recipe,</p>}
-          {data && data.meals && (
+          {randomFetchedRecipe && (
             <Card
+              className="transition-opacity duration-2000 ease-in-out opacity-100"
               onToggleFavorites={onToggleFavorites}
               data={randomFetchedRecipe}
               favoriteRecipes={favoriteRecipes}
