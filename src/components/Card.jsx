@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const Card = ({ data, onDeleteRecipe, onToggleFavorites, favoriteRecipes }) => {
   const [deleteMode, setDeleteMode] = useState(false);
@@ -37,7 +38,9 @@ const Card = ({ data, onDeleteRecipe, onToggleFavorites, favoriteRecipes }) => {
         )}
         <div className="card-actions justify-end">
           {!deleteMode ? (
-            <button className="btn">Details</button>
+            <Link href={`/recipes/${data.id}`} className="btn">
+              Details
+            </Link>
           ) : (
             <button
               onClick={() => {

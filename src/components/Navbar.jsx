@@ -5,6 +5,9 @@ const Navbar = () => {
   const router = useRouter();
 
   const getPageTitle = (path) => {
+    if (path.startsWith("/recipes/")) {
+      return "Recipe";
+    }
     switch (path) {
       case "/favorites":
         return "Favorites";
