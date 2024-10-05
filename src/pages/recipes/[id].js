@@ -3,14 +3,12 @@ import { useEffect, useState } from "react";
 import useSWR from "swr";
 
 export default function RecipeDetailsPage({ createdRecipes, onUpdateRecipe }) {
-  // Add updateRecipe as prop from App.js
   const router = useRouter();
   const { id } = router.query;
   const [recipe, setRecipe] = useState(null);
-  const [isEditing, setIsEditing] = useState(false); // Track edit mode
-  const [editFormData, setEditFormData] = useState({}); // Track form data while editing
+  const [isEditing, setIsEditing] = useState(false);
+  const [editFormData, setEditFormData] = useState({});
 
-  // Find the recipe in createdRecipes
   useEffect(() => {
     if (id && createdRecipes) {
       const foundRecipe = createdRecipes.find((recipe) => recipe.id === id);
@@ -20,7 +18,6 @@ export default function RecipeDetailsPage({ createdRecipes, onUpdateRecipe }) {
     }
   }, [id, createdRecipes]);
 
-  // Fetch from API if not found in createdRecipes
   const { data, error } = useSWR(
     recipe ? null : `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`
   );
@@ -33,7 +30,6 @@ export default function RecipeDetailsPage({ createdRecipes, onUpdateRecipe }) {
       const ingredient = mealData[`strIngredient${i}`];
       const measure = mealData[`strMeasure${i}`];
 
-      // Only include if the ingredient exists
       if (ingredient && ingredient.trim()) {
         ingredients.push(`${measure.trim()} ${ingredient.trim()}`);
       }
@@ -57,7 +53,6 @@ export default function RecipeDetailsPage({ createdRecipes, onUpdateRecipe }) {
   if (error) return <div>Failed to load the recipe</div>;
   if (!recipe) return <div>Loading...</div>;
 
-  // Handle input changes in the form when editing
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setEditFormData({
@@ -66,10 +61,9 @@ export default function RecipeDetailsPage({ createdRecipes, onUpdateRecipe }) {
     });
   };
 
-  // Toggle edit mode
   const toggleEditMode = () => {
     setIsEditing(!isEditing);
-    // Initialize the edit form data with the current recipe data
+
     setEditFormData({
       name: recipe.name,
       cuisine: recipe.cuisine,
@@ -81,17 +75,15 @@ export default function RecipeDetailsPage({ createdRecipes, onUpdateRecipe }) {
     });
   };
 
-  // Save the changes (update the createdRecipes array)
   const handleSave = () => {
     const updatedRecipe = {
       ...recipe,
-      ...editFormData, // Merged changes from the form
+      ...editFormData,
     };
-    onUpdateRecipe(updatedRecipe); // Call the update function passed as a prop from App.js
-    setIsEditing(false); // Exit edit mode
+    onUpdateRecipe(updatedRecipe);
+    setIsEditing(false);
   };
 
-  // Cancel editing and revert to view mode
   const handleCancel = () => {
     setIsEditing(false);
   };
@@ -100,7 +92,6 @@ export default function RecipeDetailsPage({ createdRecipes, onUpdateRecipe }) {
     <div className="flex justify-center items-center min-h-screen bg-base-200">
       <div className="card w-full max-w-lg bg-base-100 shadow-xl p-6 m-6">
         {isEditing ? (
-          // Edit Mode (Input Fields)
           <>
             <h2 className="card-title text-center text-3xl font-bold mb-4">
               <input
@@ -180,7 +171,6 @@ export default function RecipeDetailsPage({ createdRecipes, onUpdateRecipe }) {
             </div>
           </>
         ) : (
-          // View Mode (Static Text)
           <>
             <h2 className="card-title text-center text-3xl font-bold mb-4">
               {recipe.name}

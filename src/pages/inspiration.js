@@ -43,7 +43,7 @@ export default function InspirationPage({
   }
 
   return (
-    <div className="w-full bg-base-200">
+    <div className="w-full min-h-screen bg-base-200">
       <AreaFilter
         selectedCuisine={selectedCuisine}
         onCuisineFilter={handleCuisineFilter}
