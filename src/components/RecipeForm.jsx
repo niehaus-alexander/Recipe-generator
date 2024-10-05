@@ -3,7 +3,7 @@ const RecipeForm = ({ onSubmit }) => {
     <div className="max-w-screen-lg mx-auto flex justify-center items-center">
       <form
         onSubmit={onSubmit}
-        className="border border-solid flex flex-col justify-center items-center w-2/3 gap-2 m-6 p-6 rounded-md"
+        className="border-4 border-solid border-base-300 flex flex-col justify-center items-center w-2/3 gap-2 m-6 p-6 rounded-md"
       >
         <legend className="text-neutral text-lg font-semibold">
           Add a new recipe:

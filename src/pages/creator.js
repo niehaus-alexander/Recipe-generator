@@ -9,7 +9,7 @@ export default function CreatorPage({
   favoriteRecipes,
 }) {
   return (
-    <div className="w-full">
+    <div className="w-full bg-base-200">
       <RecipeForm onSubmit={onSubmit} />
       <CardList
         favoriteRecipes={favoriteRecipes}

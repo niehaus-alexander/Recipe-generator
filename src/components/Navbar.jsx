@@ -5,6 +5,9 @@ const Navbar = () => {
   const router = useRouter();
 
   const getPageTitle = (path) => {
+    if (path.startsWith("/recipes/")) {
+      return "Recipe";
+    }
     switch (path) {
       case "/favorites":
         return "Favorites";
@@ -22,7 +25,7 @@ const Navbar = () => {
   const currentPage = getPageTitle(router.pathname);
 
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-300">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">

@@ -73,11 +73,20 @@ export default function App({ Component, pageProps }) {
     event.target.reset();
   }
   // ______________END HANDLE SUBMIT
+  function handleUpdateRecipe(updatedRecipe) {
+    setCreatedRecipes((prevCreatedRecipes) =>
+      prevCreatedRecipes.map((recipe) =>
+        recipe.id === updatedRecipe.id ? updatedRecipe : recipe
+      )
+    );
+  }
+
   return (
     <SWRConfig value={{ fetcher }}>
       <Layout>
         <Component
           {...pageProps}
+          onUpdateRecipe={handleUpdateRecipe}
           onSubmit={handleSubmit}
           createdRecipes={createdRecipes}
           onDeleteRecipe={handleDeleteRecipe}

@@ -2,7 +2,7 @@ import CardList from "@/components/CardList";
 
 export default function FavoritesPage({ favoriteRecipes, onToggleFavorites }) {
   return (
-    <div className="h-screen w-full flex flex-col items-center">
+    <div className="min-h-screen w-full flex flex-col items-center bg-base-200">
       <h1 className="text-2xl font-semibold mt-6">Your Favorite Recipes:</h1>
       {favoriteRecipes.length > 0 ? (
         <CardList

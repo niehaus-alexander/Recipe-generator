@@ -48,9 +48,9 @@ export default function RandomRecipePickerPage({
   }
 
   return (
-    <div className="w-full">
+    <div className="w-full min-h-screen bg-base-200">
       <div className="max-w-screen-lg mx-auto">
-        <h2 className="text-lg m-6 text-center">
+        <h2 className="text-lg pt-6 text-center">
           Don't feel like thinking about what to cook? On this page we randomly
           pick you a recipe from your{" "}
           <span className="font-bold">favorites</span> and from the{" "}
