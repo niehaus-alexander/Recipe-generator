@@ -48,8 +48,6 @@ export default function App({ Component, pageProps }) {
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
-    // turn duration string into number
-
     if (data.timeInMinutes) {
       data.timeInMinutes = parseInt(
         data.timeInMinutes.replace(/[^0-9]/g, ""),
@@ -73,6 +71,7 @@ export default function App({ Component, pageProps }) {
     event.target.reset();
   }
   // ______________END HANDLE SUBMIT
+
   function handleUpdateRecipe(updatedRecipe) {
     setCreatedRecipes((prevCreatedRecipes) =>
       prevCreatedRecipes.map((recipe) =>
