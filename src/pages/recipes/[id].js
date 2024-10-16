@@ -8,18 +8,22 @@ export default function RecipeDetailsPage({ createdRecipes, onUpdateRecipe }) {
   const [recipe, setRecipe] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const [editFormData, setEditFormData] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (id && createdRecipes) {
+    if (router.isReady && id && createdRecipes && createdRecipes.length > 0) {
       const foundRecipe = createdRecipes.find((recipe) => recipe.id === id);
       if (foundRecipe) {
         setRecipe(foundRecipe);
+        setIsLoading(false);
       }
     }
-  }, [id, createdRecipes]);
+  }, [id, createdRecipes, router.isReady]);
 
   const { data, error } = useSWR(
-    recipe ? null : `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`
+    !recipe && id
+      ? `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`
+      : null
   );
 
   function mapMealDBToRecipe(mealData) {
@@ -43,15 +47,20 @@ export default function RecipeDetailsPage({ createdRecipes, onUpdateRecipe }) {
     };
   }
 
+  // Update recipe if data comes from SWR (API fetch)
   useEffect(() => {
     if (data && data.meals && data.meals.length > 0) {
       const mappedRecipe = mapMealDBToRecipe(data.meals[0]);
       setRecipe(mappedRecipe);
+      setIsLoading(false); // Stop loading once API data is fetched
     }
   }, [data]);
 
+  // Handle errors from SWR
   if (error) return <div>Failed to load the recipe</div>;
-  if (!recipe) return <div>Loading...</div>;
+
+  // Display loading indicator if still fetching data
+  if (isLoading) return <div>Loading...</div>;
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;

@@ -8,6 +8,8 @@ const Card = ({ data, onDeleteRecipe, onToggleFavorites, favoriteRecipes }) => {
   const [deleteMode, setDeleteMode] = useState(false);
   const router = useRouter();
 
+  console.log(data.id);
+
   const isFavorite = favoriteRecipes.some((recipe) => recipe.id === data.id);
   return (
     <div className="card bg-primary text-primary-content w-96 m-6 relative">
