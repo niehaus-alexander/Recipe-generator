@@ -8,6 +8,8 @@ export default function CreatorPage({
   onToggleFavorites,
   favoriteRecipes,
 }) {
+  console.log(createdRecipes);
+
   return (
     <div className="w-full bg-base-200">
       <RecipeForm onSubmit={onSubmit} />
