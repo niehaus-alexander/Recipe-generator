@@ -5,14 +5,13 @@ import useSWR from "swr";
 export default function RecipeDetailsPage({ createdRecipes, onUpdateRecipe }) {
   const router = useRouter();
   const { id } = router.query; // Get recipe id from the router query
-
   const [recipe, setRecipe] = useState(null); // Store recipe state
   const [isEditing, setIsEditing] = useState(false); // Toggle edit mode
   const [editFormData, setEditFormData] = useState({}); // Store form data when editing
 
   console.log(recipe);
 
-  // Helper function to map meal data from the API response to your recipe structure
+  // Helper function to map meal data from the API response to recipe structure
   function mapMealDBToRecipe(mealData) {
     const ingredients = [];
     for (let i = 1; i <= 20; i++) {
@@ -45,7 +44,7 @@ export default function RecipeDetailsPage({ createdRecipes, onUpdateRecipe }) {
         setRecipe(foundRecipe);
       } else if (data && data.meals && data.meals.length > 0) {
         const mealData = data.meals[0];
-        const mappedRecipe = mapMealDBToRecipe(mealData); // Map the API response to your recipe structure
+        const mappedRecipe = mapMealDBToRecipe(mealData); // Map the API response to recipe structure
         setRecipe(mappedRecipe); // Set the recipe state from API
       }
     }
