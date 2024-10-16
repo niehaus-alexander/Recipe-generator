@@ -4,27 +4,16 @@ import useSWR from "swr";
 
 export default function RecipeDetailsPage({ createdRecipes, onUpdateRecipe }) {
   const router = useRouter();
-  const { id } = router.query;
-  const [recipe, setRecipe] = useState(null);
-  const [isEditing, setIsEditing] = useState(false);
-  const [editFormData, setEditFormData] = useState({});
+  const { id } = router.query; // Get recipe id from the router query
 
-  useEffect(() => {
-    if (id && createdRecipes) {
-      const foundRecipe = createdRecipes.find((recipe) => recipe.id === id);
-      if (foundRecipe) {
-        setRecipe(foundRecipe);
-      }
-    }
-  }, [id, createdRecipes]);
+  const [recipe, setRecipe] = useState(null); // Store recipe state
+  const [isEditing, setIsEditing] = useState(false); // Toggle edit mode
+  const [editFormData, setEditFormData] = useState({}); // Store form data when editing
 
-  const { data, error } = useSWR(
-    recipe ? null : `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`
-  );
+  console.log(recipe);
 
+  // Helper function to map meal data from the API response to your recipe structure
   function mapMealDBToRecipe(mealData) {
-    if (!mealData) return null;
-
     const ingredients = [];
     for (let i = 1; i <= 20; i++) {
       const ingredient = mealData[`strIngredient${i}`];
@@ -43,16 +32,30 @@ export default function RecipeDetailsPage({ createdRecipes, onUpdateRecipe }) {
     };
   }
 
+  // Use SWR to fetch recipe data from the API
+  const { data, error } = useSWR(
+    id ? `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}` : null
+  );
+
+  // Check for createdRecipes first
   useEffect(() => {
-    if (data && data.meals && data.meals.length > 0) {
-      const mappedRecipe = mapMealDBToRecipe(data.meals[0]);
-      setRecipe(mappedRecipe);
+    if (id) {
+      const foundRecipe = createdRecipes.find((recipe) => recipe.id === id);
+      if (foundRecipe) {
+        setRecipe(foundRecipe);
+      } else if (data && data.meals && data.meals.length > 0) {
+        const mealData = data.meals[0];
+        const mappedRecipe = mapMealDBToRecipe(mealData); // Map the API response to your recipe structure
+        setRecipe(mappedRecipe); // Set the recipe state from API
+      }
     }
-  }, [data]);
+  }, [id, data, createdRecipes]);
 
-  if (error) return <div>Failed to load the recipe</div>;
-  if (!recipe) return <div>Loading...</div>;
+  if (error) return <div>Error loading recipe.</div>; // Show error if fetching fails
+  if (!recipe) return <div>Loading...</div>; // Show loading while fetching or setting the recipe
+  if (!id) return <div>Error: Recipe ID not found</div>; // Show error if no id is provided
 
+  // Handle form changes when in edit mode
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setEditFormData({
@@ -61,9 +64,9 @@ export default function RecipeDetailsPage({ createdRecipes, onUpdateRecipe }) {
     });
   };
 
+  // Toggle edit mode
   const toggleEditMode = () => {
     setIsEditing(!isEditing);
-
     setEditFormData({
       name: recipe.name,
       cuisine: recipe.cuisine,
@@ -75,6 +78,7 @@ export default function RecipeDetailsPage({ createdRecipes, onUpdateRecipe }) {
     });
   };
 
+  // Save the edited recipe
   const handleSave = () => {
     const updatedRecipe = {
       ...recipe,
@@ -84,6 +88,7 @@ export default function RecipeDetailsPage({ createdRecipes, onUpdateRecipe }) {
     setIsEditing(false);
   };
 
+  // Cancel edit mode
   const handleCancel = () => {
     setIsEditing(false);
   };
