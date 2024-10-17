@@ -1,8 +1,22 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
 
 const Navbar = () => {
+  const [isDimTheme, setIsDimTheme] = useState(false);
   const router = useRouter();
+
+  useEffect(() => {
+    if (isDimTheme) {
+      document.documentElement.setAttribute("data-theme", "dim");
+    } else {
+      document.documentElement.setAttribute("data-theme", "cmyk");
+    }
+  }, [isDimTheme]);
+
+  const handleThemeToggle = () => {
+    setIsDimTheme(!isDimTheme);
+  };
 
   const getPageTitle = (path) => {
     if (path.startsWith("/recipes/")) {
@@ -66,7 +80,11 @@ const Navbar = () => {
       <div className="navbar-center">
         <a className="btn btn-ghost text-xl">{currentPage}</a>
       </div>
-      <div className="navbar-end"></div>
+      <div className="navbar-end flex items-center space-x-4">
+        <button onClick={handleThemeToggle} className="btn btn-ghost">
+          {isDimTheme ? "Light Mode" : "Dark mode"}
+        </button>
+      </div>
     </div>
   );
 };

@@ -24,7 +24,7 @@ const Card = ({ data, onDeleteRecipe, onToggleFavorites, favoriteRecipes }) => {
             icon={faStar}
             size="2x"
             className="transition-colors duration-300"
-            color={isFavorite ? "orange" : "black"}
+            color={isFavorite ? "orange" : "gray"}
           />
         </button>
 

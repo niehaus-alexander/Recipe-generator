@@ -50,7 +50,7 @@ export default function RandomRecipePickerPage({
   return (
     <div className="w-full min-h-screen bg-base-200">
       <div className="max-w-screen-lg mx-auto px-4 py-10">
-        <h2 className="text-xl pt-6 text-center text-gray-800">
+        <h2 className="text-xl pt-6 text-center">
           Don't feel like thinking about what to cook? On this page we randomly
           pick a recipe from your <span className="font-bold">favorites</span>{" "}
           and from the{" "}
@@ -71,7 +71,7 @@ export default function RandomRecipePickerPage({
           </h2>
 
           {favoriteRecipes.length === 0 ? (
-            <p className="text-center text-gray-500">
+            <p className="text-center">
               You have no favorite recipes. Go to Creator or Inspiration to add
               some by clicking on the star!
             </p>
@@ -79,7 +79,7 @@ export default function RandomRecipePickerPage({
             <>
               <button
                 onClick={handlePickRandomFavoritesRecipe}
-                className="btn btn-secondary mb-6 bg-primary hover:bg-secondary text-white rounded-lg shadow-md transition-transform transform hover:scale-105"
+                className="btn btn-primary mb-6  hover:bg-secondary  rounded-lg shadow-md transition-transform transform hover:scale-105"
               >
                 Pick random recipe!
               </button>
@@ -100,7 +100,7 @@ export default function RandomRecipePickerPage({
           </h2>
           <button
             onClick={handleFetchRandomRecipe}
-            className="btn btn-secondary mb-6 bg-primary hover:bg-secondary text-white rounded-lg shadow-md transition-transform transform hover:scale-105"
+            className="btn btn-primary mb-6 hover:bg-secondary  rounded-lg shadow-md transition-transform transform hover:scale-105"
           >
             Pick random recipe!
           </button>

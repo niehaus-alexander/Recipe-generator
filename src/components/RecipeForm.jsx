@@ -5,9 +5,7 @@ const RecipeForm = ({ onSubmit }) => {
         onSubmit={onSubmit}
         className="border-4 border-solid border-base-300 flex flex-col justify-center items-center w-2/3 gap-2 m-6 p-6 rounded-md"
       >
-        <legend className="text-neutral text-lg font-semibold">
-          Add a new recipe:
-        </legend>
+        <legend className=" text-lg font-semibold">Add a new recipe:</legend>
         <input
           name="name"
           id="name"
