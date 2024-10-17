@@ -12,43 +12,50 @@ const Card = ({ data, onDeleteRecipe, onToggleFavorites, favoriteRecipes }) => {
 
   const isFavorite = favoriteRecipes.some((recipe) => recipe.id === data.id);
   return (
-    <div className="card bg-primary text-primary-content w-96 m-6 relative">
-      <div className="card-body">
-        <h2 className="card-title">{data.name}</h2>
-        <button onClick={() => onToggleFavorites(data)}>
+    <div className="card bg-primary text-primary-content w-96 m-6 relative rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 ease-in-out">
+      <div className="card-body p-6">
+        <h2 className="card-title text-2xl font-semibold mb-4">{data.name}</h2>
+
+        <button
+          onClick={() => onToggleFavorites(data)}
+          className="absolute top-[-1rem] right-[-1rem]"
+        >
           <FontAwesomeIcon
             icon={faStar}
             size="2x"
-            className="absolute top-[-1rem] right-[-1rem]"
+            className="transition-colors duration-300"
             color={isFavorite ? "orange" : "black"}
           />
         </button>
+
         {router.pathname !== "/inspiration" && (
-          <p>
+          <p className="mb-2">
             <span className="font-semibold">Time:</span>{" "}
             {data.isFetched ? "?" : data.timeInMinutes} min.
           </p>
         )}
-        <p>
+        <p className="mb-2">
           <span className="font-semibold">Cuisine:</span> {data.cuisine}
         </p>
         {router.pathname !== "/inspiration" && (
-          <p>
+          <p className="mb-4">
             <span className="font-semibold">Difficulty:</span>{" "}
             {data.isFetched ? "?" : data.difficulty}
           </p>
         )}
-        <div className="card-actions justify-end">
+
+        <div className="card-actions flex justify-between mt-4">
           {!deleteMode ? (
-            <Link href={`/recipes/${data.id}`} className="btn">
+            <Link
+              href={`/recipes/${data.id}`}
+              className="btn bg-white text-gray-800 hover:bg-gray-100 rounded-lg shadow-md transition-all"
+            >
               Details
             </Link>
           ) : (
             <button
-              onClick={() => {
-                onDeleteRecipe(data.id);
-              }}
-              className="btn btn-success"
+              onClick={() => onDeleteRecipe(data.id)}
+              className="btn bg-green-500 hover:bg-green-600 text-white rounded-lg shadow-md transition-all"
             >
               Confirm Delete!
             </button>
@@ -57,7 +64,9 @@ const Card = ({ data, onDeleteRecipe, onToggleFavorites, favoriteRecipes }) => {
           {router.pathname === "/creator" && data.ownRecipe && (
             <button
               onClick={() => setDeleteMode(!deleteMode)}
-              className="btn btn-error"
+              className={`btn ${
+                deleteMode ? "bg-red-500" : "bg-red-400"
+              } hover:bg-red-600 text-white rounded-lg shadow-md transition-all`}
             >
               {deleteMode ? "Cancel" : "Delete"}
             </button>

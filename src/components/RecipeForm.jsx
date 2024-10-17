@@ -74,7 +74,7 @@ const RecipeForm = ({ onSubmit }) => {
             id="ingredients"
             rows={4}
             className="textarea textarea-primary w-full max-w-xs"
-            placeholder={`- onions\n- garlic\n- tomatos`}
+            placeholder={`4 onions, garlic, 2 bell pepper`}
           ></textarea>
         </div>
         <div className="w-full max-w-xs">

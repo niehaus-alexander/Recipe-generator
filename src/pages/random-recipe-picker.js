@@ -49,11 +49,11 @@ export default function RandomRecipePickerPage({
 
   return (
     <div className="w-full min-h-screen bg-base-200">
-      <div className="max-w-screen-lg mx-auto">
-        <h2 className="text-lg pt-6 text-center">
+      <div className="max-w-screen-lg mx-auto px-4 py-10">
+        <h2 className="text-xl pt-6 text-center text-gray-800">
           Don't feel like thinking about what to cook? On this page we randomly
-          pick you a recipe from your{" "}
-          <span className="font-bold">favorites</span> and from the{" "}
+          pick a recipe from your <span className="font-bold">favorites</span>{" "}
+          and from the{" "}
           <a
             href="https://www.themealdb.com/api.php"
             target="_blank"
@@ -64,6 +64,7 @@ export default function RandomRecipePickerPage({
           </a>
           .
         </h2>
+
         <div className="w-full p-6 flex justify-center items-center flex-col mb-6">
           <h2 className="text-center font-semibold text-3xl mb-10">
             Favorites
@@ -78,7 +79,7 @@ export default function RandomRecipePickerPage({
             <>
               <button
                 onClick={handlePickRandomFavoritesRecipe}
-                className="btn btn-secondary mb-6"
+                className="btn btn-secondary mb-6 bg-primary hover:bg-secondary text-white rounded-lg shadow-md transition-transform transform hover:scale-105"
               >
                 Pick random recipe!
               </button>
@@ -92,21 +93,27 @@ export default function RandomRecipePickerPage({
             </>
           )}
         </div>
-        <div className="w-full p-6 flex justify-center items-center flex-col ">
+
+        <div className="w-full p-6 flex justify-center items-center flex-col">
           <h2 className="text-center font-semibold text-3xl mb-10">
             MealDB Database
           </h2>
           <button
             onClick={handleFetchRandomRecipe}
-            className="btn btn-secondary mb-6"
+            className="btn btn-secondary mb-6 bg-primary hover:bg-secondary text-white rounded-lg shadow-md transition-transform transform hover:scale-105"
           >
             Pick random recipe!
           </button>
-          {isLoading && <p>Loading...</p>}
-          {error && <p>Error loading recipe,</p>}
+          {isLoading && (
+            <div className="flex justify-center items-center">
+              <span className="loading loading-spinner loading-lg text-primary"></span>
+            </div>
+          )}
+          {error && (
+            <p className="text-red-600 font-semibold">Error loading recipe.</p>
+          )}
           {randomFetchedRecipe && (
             <Card
-              className="transition-opacity duration-2000 ease-in-out opacity-100"
               onToggleFavorites={onToggleFavorites}
               data={randomFetchedRecipe}
               favoriteRecipes={favoriteRecipes}
