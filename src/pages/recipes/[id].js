@@ -51,7 +51,12 @@ export default function RecipeDetailsPage({ createdRecipes, onUpdateRecipe }) {
   }, [id, data, createdRecipes]);
 
   if (error) return <div>Error loading recipe.</div>; // Show error if fetching fails
-  if (!recipe) return <div>Loading...</div>; // Show loading while fetching or setting the recipe
+  if (!recipe)
+    return (
+      <div className="flex justify-center items-center">
+        <span className="loading loading-spinner loading-lg text-primary"></span>
+      </div>
+    ); // Show loading while fetching or setting the recipe
   if (!id) return <div>Error: Recipe ID not found</div>; // Show error if no id is provided
 
   // Handle form changes when in edit mode

@@ -55,7 +55,7 @@ const Card = ({ data, onDeleteRecipe, onToggleFavorites, favoriteRecipes }) => {
           ) : (
             <button
               onClick={() => onDeleteRecipe(data.id)}
-              className="btn bg-green-500 hover:bg-green-600 text-white rounded-lg shadow-md transition-all"
+              className="btn btn-success text-white rounded-lg shadow-md transition-all"
             >
               Confirm Delete!
             </button>
@@ -64,9 +64,7 @@ const Card = ({ data, onDeleteRecipe, onToggleFavorites, favoriteRecipes }) => {
           {router.pathname === "/creator" && data.ownRecipe && (
             <button
               onClick={() => setDeleteMode(!deleteMode)}
-              className={`btn ${
-                deleteMode ? "bg-red-500" : "bg-red-400"
-              } hover:bg-red-600 text-white rounded-lg shadow-md transition-all`}
+              className={`btn btn-error text-white rounded-lg shadow-md transition-all`}
             >
               {deleteMode ? "Cancel" : "Delete"}
             </button>

@@ -16,7 +16,18 @@ export default function InspirationPage({
   );
 
   if (error) return <div>failed to load</div>;
-  if (isLoading) return <div>loading...</div>;
+  if (isLoading)
+    return (
+      <div className="w-full min-h-screen bg-base-200">
+        <AreaFilter
+          selectedCuisine={selectedCuisine}
+          onCuisineFilter={handleCuisineFilter}
+        />
+        <div className="flex justify-center items-center mt-20">
+          <span className="loading loading-spinner loading-lg text-primary"></span>
+        </div>
+      </div>
+    );
 
   const recipeFetchData = data.meals.map((meal) => {
     const ingredients = [];
