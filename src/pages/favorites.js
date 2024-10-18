@@ -12,7 +12,7 @@ export default function FavoritesPage({ favoriteRecipes, onToggleFavorites }) {
         />
       ) : (
         <h2 className="text-lg text-center m-6 px-20">
-          ...seems like you don`&apos;`t have any favorites yet. Go to Creator
+          ...seems like you don&apos;t have any favorites yet. Go to Creator
           or Inspiration to add recipes to your favorites by clicking on the
           star.
         </h2>

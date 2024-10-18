@@ -18,7 +18,7 @@ export default function Home() {
             Welcome to Recipe Haven, your ultimate destination for culinary
             inspiration and delicious creations. Explore our extensive
             collection of recipes, from timeless classics to innovative dishes,
-            all designed to satisfy every palate. Can`&apos;`t decide what to
+            all designed to satisfy every palate. Can&apos;t decide what to
             cook? Let our Random Recipe Picker choose for you and take the
             guesswork out of meal planning!
           </p>

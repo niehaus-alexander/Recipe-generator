@@ -51,7 +51,7 @@ export default function RandomRecipePickerPage({
     <div className="w-full min-h-screen bg-base-200">
       <div className="max-w-screen-lg mx-auto px-4 py-10">
         <h2 className="text-xl pt-6 text-center">
-          Don`&apos;`t feel like thinking about what to cook? On this page we
+          Don&apos;t feel like thinking about what to cook? On this page we
           randomly pick a recipe from your{" "}
           <span className="font-bold">favorites</span> and from the{" "}
           <a
