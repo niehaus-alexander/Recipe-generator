@@ -18,7 +18,7 @@ export default function App({ Component, pageProps }) {
       defaultValue: [],
     }
   );
-  // add and remove recipes to favoritesRecipes state
+
   function handleToggleFavorites(data) {
     setFavoriteRecipes((prevFavoriteRecipes) => {
       const exists = prevFavoriteRecipes.some(
@@ -31,7 +31,7 @@ export default function App({ Component, pageProps }) {
       }
     });
   }
-  // remove recipes from created- and favoriteRecipes
+
   function handleDeleteRecipe(id) {
     setCreatedRecipes((prevCreatedRecipes) =>
       prevCreatedRecipes.filter((recipe) => recipe.id !== id)
@@ -72,7 +72,6 @@ export default function App({ Component, pageProps }) {
   }
   // ______________END HANDLE SUBMIT
 
-  // handle editing of existing recipe
   function handleUpdateRecipe(updatedRecipe) {
     setCreatedRecipes((prevCreatedRecipes) =>
       prevCreatedRecipes.map((recipe) =>
