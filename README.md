@@ -1,3 +1,35 @@
+# 🍽️ Recipe Website
+
+Welcome to the **Recipe Website**! This is a project that allows users to create and manage their own recipes, as well as explore new ones from [TheMealDB](https://www.themealdb.com/api.php). Users can favorite their own recipes or ones fetched from the external database, and even randomly pick a recipe to try next!
+
+## 🚀 Features
+
+### Current Features
+- **Create Recipes**: Users can create their own personalized recipes by entering the ingredients, steps, and other details.
+- **Favorite Recipes**: Users can favorite their own recipes or any recipes fetched from the MealDB API.
+- **Random Recipe Picker**: Not sure what to cook? You can randomly select a recipe from the MealDB database or from your own list of favorites.
+- **Explore MealDB**: Fetch and explore a vast collection of recipes from the MealDB API.
+
+### Planned Future Features
+- **User Authentication**: Implement user authentication to allow users to log in, sign up, and manage their accounts.
+- **Database Connection**: Recipes and user data will be stored persistently in a connected database for better scalability and reliability.
+  
+## 🛠️ Technologies Used
+
+- **Frontend**: 
+  - Tailwind CSS
+  - Daisy UI
+  - JavaScript (React)
+  
+- **External API**: 
+  - [TheMealDB API](https://www.themealdb.com/api.php) for fetching recipes.
+
+- **Database** (Planned):
+  - MongoDB / PostgreSQL (To be decided)
+
+- **Authentication** (Planned):
+  - JWT (JSON Web Token) for secure authentication.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
