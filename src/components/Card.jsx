@@ -12,7 +12,7 @@ const Card = ({ data, onDeleteRecipe, onToggleFavorites, favoriteRecipes }) => {
 
   const isFavorite = favoriteRecipes.some((recipe) => recipe.id === data.id);
   return (
-    <div className="card bg-primary text-primary-content w-96 m-6 relative rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 ease-in-out">
+    <div className="card bg-primary text-primary-content w-72 sm:w-96 m-6 relative rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 ease-in-out">
       <div className="card-body p-6">
         <h2 className="card-title text-2xl font-semibold mb-4">{data.name}</h2>
 
