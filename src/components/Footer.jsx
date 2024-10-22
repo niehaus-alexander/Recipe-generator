@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const Footer = () => {
   return (
     <footer className="w-full bg-base-300 py-6">
@@ -7,9 +9,9 @@ const Footer = () => {
           <a href="#" className="hover:text-blue-500">
             Privacy Policy
           </a>
-          <a href="#" className="hover:text-blue-500">
-            Terms of Service
-          </a>
+          <Link href="/impressum" className="hover:text-blue-500">
+            Impressum
+          </Link>
         </div>
       </div>
     </footer>
