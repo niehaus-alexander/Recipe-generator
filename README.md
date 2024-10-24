@@ -1,44 +1,12 @@
-# 🍽️ Recipe Website
+# Project Title: Lazy Recipe
 
-Welcome to the **Recipe Website**! This is a project that allows users to create and manage their own recipes, as well as explore new ones from [TheMealDB](https://www.themealdb.com/api.php). Users can favorite their own recipes or ones fetched from the external database, and even randomly pick a recipe to try next!
-
-## 🚀 Features
-
-### Current Features
-
-- **Create Recipes**: Users can create their own personalized recipes by entering the ingredients, steps, and other details.
-- **Favorite Recipes**: Users can favorite their own recipes or any recipes fetched from the MealDB API.
-- **Random Recipe Picker**: Not sure what to cook? You can randomly select a recipe from the MealDB database or from your own list of favorites.
-- **Explore MealDB**: Fetch and explore a vast collection of recipes from the MealDB API.
-
-### Planned Future Features
-
-- **User Authentication**: Implement user authentication to allow users to log in, sign up, and manage their accounts.
-- **Database Connection**: Recipes and user data will be stored persistently in a connected database for better scalability and reliability.
-
-## 🛠️ Technologies Used
-
-- **Frontend**:
-  - Tailwind CSS
-  - Daisy UI
-  - JavaScript (React)
-- **External API**:
-
-  - [TheMealDB API](https://www.themealdb.com/api.php) for fetching recipes.
-
-- **Database** (Planned):
-
-  - MongoDB / PostgreSQL (To be decided)
-
-- **Authentication** (Planned):
-  - JWT (JSON Web Token) for secure authentication.
-
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Video Demo: [Link to Video on Youtube](https://www.youtube.com/watch?v=0ENvm179Rn0)
 
 ## CS50 Final Project - Project Description
 
 This project is my final submission for Harvard's CS50 Introduction to Computer Science course. It encompasses various technical implementations and architectural decisions aimed at creating a functional web application. Below is a comprehensive overview of the technical details of this project.
-Technologies Used
+
+### Technologies Used
 
 The project leverages several technologies, including Next.js, React, Tailwind CSS, and Daisy UI. Next.js serves as the framework for building the application, providing server-side rendering and static site generation capabilities. React is utilized for building interactive user interfaces, enabling a component-based architecture that promotes reusability. Tailwind CSS offers a utility-first CSS framework that allows for rapid UI development, while Daisy UI enhances Tailwind's components, providing pre-designed elements that improve aesthetics and functionality.
 
@@ -82,6 +50,43 @@ The application employs a centralized state management approach. Created and fav
 Conclusion
 
 This project serves as a demonstration of my ability to integrate various web technologies to build a functional and interactive application. The combination of Next.js for routing, React for component management, Tailwind CSS for styling, and Daisy UI for enhanced UI components creates a cohesive user experience. The technical decisions made throughout the development process reflect my understanding of modern web development practices and my ability to apply these concepts effectively. Through this project, I have not only consolidated my technical skills but also gained valuable experience in creating a user-oriented web application.
+
+## 🍽️ Recipe Website
+
+Welcome to the **Recipe Website**! This is a project that allows users to create and manage their own recipes, as well as explore new ones from [TheMealDB](https://www.themealdb.com/api.php). Users can favorite their own recipes or ones fetched from the external database, and even randomly pick a recipe to try next!
+
+## 🚀 Features
+
+### Current Features
+
+- **Create Recipes**: Users can create their own personalized recipes by entering the ingredients, steps, and other details.
+- **Favorite Recipes**: Users can favorite their own recipes or any recipes fetched from the MealDB API.
+- **Random Recipe Picker**: Not sure what to cook? You can randomly select a recipe from the MealDB database or from your own list of favorites.
+- **Explore MealDB**: Fetch and explore a vast collection of recipes from the MealDB API.
+
+### Planned Future Features
+
+- **User Authentication**: Implement user authentication to allow users to log in, sign up, and manage their accounts.
+- **Database Connection**: Recipes and user data will be stored persistently in a connected database for better scalability and reliability.
+
+## 🛠️ Technologies Used
+
+- **Frontend**:
+  - Tailwind CSS
+  - Daisy UI
+  - JavaScript (React)
+- **External API**:
+
+  - [TheMealDB API](https://www.themealdb.com/api.php) for fetching recipes.
+
+- **Database** (Planned):
+
+  - MongoDB / PostgreSQL (To be decided)
+
+- **Authentication** (Planned):
+  - JWT (JSON Web Token) for secure authentication.
+
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 
